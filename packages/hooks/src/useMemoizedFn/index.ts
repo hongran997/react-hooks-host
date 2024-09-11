@@ -29,9 +29,11 @@ function useMemoizedFn<T extends noop>(fn: T) {
       console.error(`useMemoizedFn expected parameters is a function, got ${typeof fn}`);
     }
   }
-
+  // useRef 的作用是创建一个可变的引用对象，这个对象在组件的整个生命周期内保持不变。它通常用于以下几种情况：
   const fnRef = useRef<T>(fn);
 
+  // useMemo 的作用是对传入的函数进行记忆化处理，只有在依赖项（这里是 fn）发生变化时才会重新计算和返回新的函数。
+  // 这样可以避免在每次渲染时都创建新的函数实例，从而提高性能。
   fnRef.current = useMemo(() => fn, [fn]);
 
   // TODO
@@ -45,4 +47,3 @@ function useMemoizedFn<T extends noop>(fn: T) {
 }
 
 export default useMemoizedFn;
-
