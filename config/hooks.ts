@@ -40,7 +40,7 @@ export const menus = [
   },
   {
     title: 'Effect',
-    // children: ['useDebounceFn', 'useThrottleFn', 'useUpdateEffect'],
+    children: ['useDebounceFn', 'useThrottleFn', 'useUpdateEffect'],
   },
   {
     title: 'DOM',
