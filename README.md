@@ -1,4 +1,4 @@
-因为 webpack 的缘故， 最高支持 node16
+因为 webpack 的缘故， 最高支持 node16, node:16.14.0
 
 限制包管理器
 pnpm run preinstall

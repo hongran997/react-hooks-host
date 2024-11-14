@@ -23,8 +23,10 @@ export const menus = [
     title: '状态',
     children: [
       'useBoolean',
+      'useToggle',
+      'useDebounce',
+      'useThrottle',
       //   'useCookieState',
-      //   'useDebounce',
       //   'useGetState',
       //   'useLocalStorageState',
       //   'useMap',
@@ -34,8 +36,6 @@ export const menus = [
       //   'useSessionStorageState',
       //   'useSet',
       //   'useSetState',
-      'useToggle',
-      //   'useThrottle',
     ],
   },
   {
