@@ -5,7 +5,7 @@ import { sleep } from '../../utils/testingHelpers';
 describe('useDebounce', () => {
   it('useDebounce wait:200ms', async () => {
     let mountedState = 0;
-    const { result, rerender } = renderHook(() => useDebounce(mountedState, { wait: 200 }));
+    const { result, rerender } = renderHook(() => useDebounce(mountedState, 200));
     expect(result.current).toBe(0);
     mountedState = 1;
     rerender();

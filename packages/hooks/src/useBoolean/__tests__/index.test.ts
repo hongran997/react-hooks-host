@@ -24,11 +24,11 @@ describe('useBoolean', () => {
     });
     expect(result.current[0]).toBe(false);
     act(() => {
-      result.current[1].set(true);
+      result.current[1].setTrue();
     });
     expect(result.current[0]).toBe(true);
     act(() => {
-      result.current[1].set(false);
+      result.current[1].setFalse();
     });
     expect(result.current[0]).toBe(false);
     act(() => {

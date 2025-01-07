@@ -3,10 +3,9 @@
  * desc: 在组件卸载时，执行函数。
  */
 
-import React from 'react';
-import useUnmount from '../index';
+import React, { useState } from 'react';
+import useUnmount from './index';
 import { message } from 'antd';
-import useBoolean from '../../useBoolean';
 
 const MyComponent = () => {
   useUnmount(() => {
@@ -17,11 +16,11 @@ const MyComponent = () => {
 };
 
 export default () => {
-  const [state, { toggle }] = useBoolean();
+  const [state, setState] = useState(true);
 
   return (
     <>
-      <button type="button" onClick={toggle}>
+      <button type="button" onClick={() => setState((prev) => !prev)}>
         {state ? 'unmount' : 'mount'}
       </button>
       {state && <MyComponent />}

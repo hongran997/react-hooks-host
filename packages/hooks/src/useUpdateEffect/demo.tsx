@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { useState, useEffect } from 'react';
-import useUpdateEffect from '../index';
+import useUpdateEffect from './index';
 
 export default () => {
   const [count, setCount] = useState(0);
@@ -14,10 +14,16 @@ export default () => {
 
   useEffect(() => {
     setEffectCount((effectCount) => effectCount + 1);
+    return () => {
+      console.log('useEffect 清理');
+    };
   }, [count]);
 
   useUpdateEffect(() => {
     setupdateEffectCount((updateEffectCount) => updateEffectCount + 1);
+    return () => {
+      console.log('useUpdateEffect 清理');
+    };
   }, [count]);
 
   return (

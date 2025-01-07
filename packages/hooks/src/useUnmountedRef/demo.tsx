@@ -1,6 +1,5 @@
-import useBoolean from '../../useBoolean';
-import useUnmountedRef from '../';
-import React, { useEffect } from 'react';
+import useUnmountedRef from './index';
+import React, { useEffect, useState } from 'react';
 import { message } from 'antd';
 
 function MyComponent() {
@@ -12,21 +11,25 @@ function MyComponent() {
    * 同一组件内的多个 useEffect 按照在代码中的顺序依次执行。
    */
   useEffect(() => {
-    setTimeout(() => {
+    let timer = setTimeout(() => {
       if (!unmountedRef.currect) {
         message.info('component is alive');
       }
     }, 2000);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, []);
 
   return <p>hello world</p>;
 }
 
 export default () => {
-  const [state, { toggle }] = useBoolean(true);
+  const [state, setState] = useState(true);
   return (
     <>
-      <button type="button" onClick={toggle}>
+      <button type="button" onClick={() => setState((prev) => !prev)}>
         {state ? 'unmount' : 'mount'}
       </button>
       {state && <MyComponent />}

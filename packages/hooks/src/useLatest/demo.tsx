@@ -4,19 +4,20 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import useLatest from '../index';
+import useLatest from './index';
 
 export default () => {
   const [count, setCount] = useState(0);
 
-  // TODO
   const latestCountRef = useLatest(count);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCount(latestCountRef.current + 1);
+      // setCount((count) => count + 1);
+      // setCount(count + 1); // 这里会报错，因为 count 是闭包变量
     }, 1000);
-    return () => clearInterval(interval); // 如果添加了这段代码，会在组件卸载之后删除定时器。否则，定时器继续运行
+    return () => clearInterval(interval);
   }, []);
 
   return (

@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import useBoolean from '../index';
+import useBoolean from './index';
 
 export default () => {
   const [state, { toggle, setFalse, setTrue }] = useBoolean(true);

@@ -9,14 +9,14 @@ nav:
 
 ## 代码演示
 
-<code src="./demo/index.tsx"></code>
+<code src="./demo.tsx"></code>
 
 ### 基础用法
 
 ## API
 
 ```
-const [state, {setTrue, setFalse, set, toggle}] = useBoolean(defaultValue ?: boolean)
+const [state, {setTrue, setFalse, toggle}] = useBoolean(defaultValue ?: boolean)
 ```
 
 ### Params
@@ -34,9 +34,8 @@ const [state, {setTrue, setFalse, set, toggle}] = useBoolean(defaultValue ?: boo
 
 ### Actions
 
-| 参数     | 说明         | 类型                       |
-| -------- | ------------ | -------------------------- |
-| setTrue  | 设置为 true  | `() => void`               |
-| setFalse | 设置为 false | `() => void`               |
-| set      | 设置 state   | `(value: boolean) => void` |
-| toggle   | 切换 state   | `() => void`               |
+| 参数     | 说明         | 类型         |
+| -------- | ------------ | ------------ |
+| setTrue  | 设置为 true  | `() => void` |
+| setFalse | 设置为 false | `() => void` |
+| toggle   | 切换 state   | `() => void` |

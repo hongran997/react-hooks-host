@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react';
-import type { DebounceOptions } from '../model/DebounceOptions';
-import useDebounceFn from '../useDebounceFn';
-
-function useDebounce<T>(value: T, options: DebounceOptions) {
-  const [debounce, setDebounced] = useState(value);
-
-  const { run, cancel, flush } = useDebounceFn(() => {
-    setDebounced(value);
-  }, options);
+function useDebounce<T>(value: T, wait: number = 1000) {
+  const [debouncedValue, setDebouncedValue] = useState(value);
 
   useEffect(() => {
-    run();
-  }, [value]);
+    let timer = setTimeout(() => {
+      setDebouncedValue(value);
+    }, wait);
 
-  return debounce;
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [value, wait]);
+
+  return debouncedValue;
 }
 export default useDebounce;
