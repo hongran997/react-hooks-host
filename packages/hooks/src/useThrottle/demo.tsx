@@ -4,12 +4,11 @@
  */
 
 import React, { useState } from 'react';
-import useThrottle from '../index';
+import useThrottle from './index';
 export default () => {
-  // TODO
   const [value, setValue] = useState('');
 
-  const throttledValue = useThrottle(value, { wait: 2000 });
+  const throttledValue = useThrottle(value, 2000);
 
   return (
     <div>

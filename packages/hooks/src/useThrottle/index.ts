@@ -1,17 +1,31 @@
-import type { ThrottleOptions } from '../model/ThrottleOptions';
-import useThrottleFn from '../useThrottleFn';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
-export default function useThrottle(value: any, options: ThrottleOptions) {
+export default function useThrottle(value: any, wait: number = 1000) {
   const [throttled, setThrottled] = useState(value);
-
-  const { run, cancel, flush } = useThrottleFn(() => {
-    setThrottled(value);
-  }, options);
+  let lastTime = useRef(0);
+  const timeoutRef = useRef();
 
   useEffect(() => {
-    run();
-  }, [value]);
+    const now = Date.now();
+    if (now - lastTime.current >= wait) {
+      lastTime.current = now;
+      setThrottled(value);
+    } else {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      timeoutRef.current = setTimeout(() => {
+        lastTime.current = Date.now();
+        setThrottled(value);
+      }, wait);
+    }
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [value, wait]);
 
   return throttled;
 }

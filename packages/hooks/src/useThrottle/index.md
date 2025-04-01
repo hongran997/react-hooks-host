@@ -11,25 +11,17 @@ nav:
 
 ### 基础用法
 
-<code src="./demo/demo.tsx" />
+<code src="./demo.tsx" />
 
 ## API
 
 ```ts
-const throttledValue = useThrottle(value: any, options?: Options)
+const throttledValue = useThrottle(value: any, wait?: number)
 ```
 
 ### Params
 
-| 参数    | 说明           | 类型    | 默认值 |
-| ------- | -------------- | ------- | ------ |
-| value   | 需要节流的值   | any     | -      |
-| options | 配置节流的行为 | Options | -      |
-
-### Options
-
-| 参数     | 说明             | 类型    | 默认值 |
-| -------- | ---------------- | ------- | ------ |
-| wait     | 节流时间         | number  | 1000   |
-| leading  | 是否在节流前执行 | boolean | true   |
-| trailing | 是否在节流后执行 | boolean | true   |
+| 参数  | 说明         | 类型   | 默认值 |
+| ----- | ------------ | ------ | ------ |
+| value | 需要节流的值 | any    | -      |
+| wait  | 节流时间     | number | 1000   |
